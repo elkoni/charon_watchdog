@@ -2,7 +2,7 @@
 #
 # Charon daemon watchdog script - charon-systemd required
 # responder has a dynamic ip and static FQDN ( dynamic DNS for example )
-# responder ip can change after ISP connection drops and reestablishesA
+# responder ip can change after ISP connection drops and reestablishes
 # charon does not re-resolve peer when DPD or retransmit is active
 # ver 0.0.0.1
 #
