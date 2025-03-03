@@ -29,8 +29,8 @@ if [ -z ${NEWIP} ];
 fi
 
 # debug info
-[[ ${ACTIP}x == ${NEWIP}x ]] && echo ${ACTIP} ${NEWIP}
-if [ ${ACTIP}x != ${NEWIP}x ];
+[[ ${ACTIP} == ${NEWIP} ]] && echo ${ACTIP} ${NEWIP}
+if [ ${ACTIP} != ${NEWIP} ];
         then
                 echo "Restarting charon daemon to re-resolve remote"
                 systemctl restart strongswan.service
