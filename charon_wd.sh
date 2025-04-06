@@ -19,6 +19,8 @@ ACTIP=$(echo "${SWANOUT}" | awk -F[\@\[\ ] '/remote/{print $7;exit}')
 if [ -z ${ACTIP} ];
         then
                 echo "Remote IKE info not available"
+                echo "Restarting charon daemon"
+                systemctl restart strongswan.service
                 exit
 fi
 NEWIP=$(dig +short ${REMOTE})
@@ -31,7 +33,8 @@ fi
 # debug info
 [[ ${ACTIP} == ${NEWIP} ]] && echo ${ACTIP} ${NEWIP}
 if [ ${ACTIP} != ${NEWIP} ];
-        then
+        then        
+                echo "Detecting IP change"
                 echo "Restarting charon daemon to re-resolve remote"
                 systemctl restart strongswan.service
 fi
